@@ -7,6 +7,8 @@ import { from } from 'rxjs';
 const routes: Routes = [
   { path: 'api/signin', component: LoginComponent},
   { path: 'api/signup', component: RegisterComponent },
+  { path: '', redirectTo: '/api/signin', pathMatch: 'full' }
+
 ];
 
 @NgModule({
