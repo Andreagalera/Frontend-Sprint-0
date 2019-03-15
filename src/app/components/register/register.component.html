@@ -1,39 +1,106 @@
 <h2>Register</h2>
-<form [formGroup]="form">
-    <div class="form-group">
-      <label for="displayNameInput">Display Name</label>
-      <input type="text" class="form-control" id="displayNameInput" name="displayName" #displayName="ngModel" [(ngModel)]="userService.selectedUser.displayName" required pattern="^.{4,8}$"/>
-      <div class="alert alert-danger" *ngIf="displayName.touched && !displayName.valid">
-        <div *ngIf="displayName.errors?.required">Display Name is required</div>
-        <div *ngIf="displayName.errors?.pattern">Display Name must have between 4 and 8 characters long</div>
+<form [formGroup]="registerForm" (ngSubmit)="register()">
+  <div class="form-group">
+    <label>Name</label>
+    <input type="text" class="form-control" formControlName="name"/>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.name">
+        <div class="alert alert-danger" *ngIf="registerForm.get('name').hasError(validation.type) && (registerForm.get('name').dirty || registerForm.get('name').touched)">
+          {{ validation.message }}
         </div>
+      </ng-container>
     </div>
-    <div class="form-group">
-      <label for="passwordInput">Password</label>
-      <input type="password" class="form-control" id="passwordInput" name="password" #password="ngModel" [(ngModel)]="userService.selectedUser.password" required pattern="^(?=.*\d).{4,8}$"/>
-      <div class="alert alert-danger" *ngIf="password.touched && !password.valid">
-        <div *ngIf="password.errors?.required">Password is required</div>
-        <div *ngIf="password.errors?.pattern">Password is invalid. Must have between 4 and 8 characters long and include at least on number</div>
-      </div>
+  </div>
+  <div class="form-group">
+    <label>Surname</label>
+    <input type="text" class="form-control" formControlName="surname"/>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.surname">
+        <div class="alert alert-danger" *ngIf="registerForm.get('surname').hasError(validation.type) && (registerForm.get('surname').dirty || registerForm.get('surname').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
     </div>
-    <div class="form-group">
-      <label for="emailInput">Email</label>
-      <input type="email" class="form-control" id="emailInput" name="email" #email="ngModel" [(ngModel)]="userService.selectedUser.email" required pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"/>
-      <div class="alert alert-danger" *ngIf="email.touched && !email.valid">
-        <div *ngIf="email.errors?.required">Email is required</div>
-        <div *ngIf="email.errors?.pattern">Email is invalid. The domain name can't has numbers and must has between 2 and 3 characters and only one dot</div>
-      </div>
+  </div>
+  <div class="form-group">
+    <label>Username</label>
+    <input type="text" class="form-control" formControlName="username"/>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.username">
+        <div class="alert alert-danger" *ngIf="registerForm.get('username').hasError(validation.type) && (registerForm.get('username').dirty || registerForm.get('username').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
     </div>
-    <div class="form-group">
-      <label for="confirmPasswordInput">Confirm Password</label>
-      <input type="password" class="form-control" id="confirmPasswordInput"  name="confirmPassword" #emailConfirmed="ngModel" [(ngModel)]="confirmEmail" required pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"/>
-      <div *ngIf="passwordConfirmed.touched && !passwordConfirmed.valid">
-        <div *ngIf="(confirmPassword !== userService.selectedUser.password)" class="alert alert-danger">Password and Confirm Password must match</div>
-        <div *ngIf="passwordConfirmed.errors?.required" class="alert alert-danger">Password Confirmation is required</div>
-      </div>
-    </div> 
-    <div class="form-group">
-      <button class="btn btn-primary" (click)="register(registerForm)" [disabled]="registerForm.invalid || (confirmPasswword != userService.selectedUser.email)">Register</button>
-      <a [routerLink]="['']" style="margin-left: 30px">Cancel</a>
+  </div>
+  <div class="form-group">
+    <label>Email</label>
+    <input type="text" class="form-control" formControlName="email"/>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.email">
+        <div class="alert alert-danger" *ngIf="registerForm.get('email').hasError(validation.type) && (registerForm.get('email').dirty || registerForm.get('email').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
     </div>
+  </div>
+  <div class="form-group">
+    <label>Age</label>
+    <input type="text" class="form-control" formControlName="age"/>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.age">
+        <div class="alert alert-danger" *ngIf="registerForm.get('age').hasError(validation.type) && (registerForm.get('age').dirty || registerForm.get('age').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Description</label>
+    <input type="text" class="form-control" formControlName="description"/>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.description">
+        <div class="alert alert-danger" *ngIf="registerForm.get('description').hasError(validation.type) && (registerForm.get('description').dirty || registerForm.get('description').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Localization</label>
+    <input type="text" class="form-control" formControlName="localization"/>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.localization">
+        <div class="alert alert-danger" *ngIf="registerForm.get('localization').hasError(validation.type) && (registerForm.get('localization').dirty || registerForm.get('localization').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Password</label>
+    <input type="password" class="form-control" formControlName="password"/>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.password">
+        <div class="alert alert-danger" *ngIf="registerForm.get('password').hasError(validation.type) && (registerForm.get('password').dirty || registerForm.get('password').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Confirm Password</label>
+    <input type="password" class="form-control" formControlName="confirmPassword"/>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.confirmPassword">
+        <div class="alert alert-danger" *ngIf="registerForm.get('confirmPassword').hasError(validation.type) && (registerForm.get('confirmPassword').dirty || registerForm.get('confirmPassword').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <div class="form-group">
+    <button class="btn btn-primary" type="submit" [disabled]="registerForm.invalid">Register</button>
+    <a [routerLink]="['']" style="margin-left: 30px">Cancel</a>
+  </div>
 </form>

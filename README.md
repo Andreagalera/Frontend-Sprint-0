@@ -1,6 +1,6 @@
 # API-REST
 
-This is the Backend of the Sprint0 using Angular 
+This is the Frontend of the Sprint0 using Angular 
 
 ---
 

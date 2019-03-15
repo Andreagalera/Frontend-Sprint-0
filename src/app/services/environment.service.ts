@@ -4,6 +4,6 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class EnvironmentService {
-  //urlUser: string = "http://localhost:3001/api/";
+  urlUser: string = "http://147.83.7.158";
   
 }
