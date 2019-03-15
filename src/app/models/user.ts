@@ -1,16 +1,25 @@
 export class User {
-    email: string;
-    firstname: string;
-    lastname: string;
+    name: string;
+    surname: string;
     username :string;
     password: string;
+    email: string;
+    age: string;
+    picture: string;
+    description: string;
+    localization: string;
 
-    constructor(email = '', firstname = '', lastname = '', username = '', password = '') {
+
+    constructor(email = '', name = '', age = '', username = '', password = '', surname = '', pictute = '', descirption = '', localization = '') {
         this.email = email;
-        this.firstname=firstname;
-        this.lastname=lastname;
         this.username=username;
         this.password=password;
+        this.name=name;
+        this.age=age;
+        this.description=descirption;
+        this.localization=localization;
+        this.picture=pictute;
+        this.surname=surname;
     }
 
 }
