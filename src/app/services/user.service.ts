@@ -20,11 +20,11 @@ export class UserService {
     //return this.http.post(this.environment.urlUser + "signin", user)
   }
   signin(user: User)  {
-   return this.http.post(this.environment.urlUser + "signin", user)
+   return this.http.post(this.environment.urlUser + "/user/signin", user)
   }
 
   getUsers(){
-    return this.http.get(this.environment.urlUser)
+    return this.http.get(this.environment.urlUser + "/users")
     
   }
 

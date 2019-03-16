@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
       ]
     }
   }
-  login(loginForm: NgForm) {
+ /*  login(loginForm: NgForm) {
     console.log(loginForm.value);
     this.userService.signin(loginForm.value)
       .subscribe(
@@ -49,13 +49,30 @@ export class LoginComponent implements OnInit {
           console.log(res);
           let token = res['token'];
           localStorage.setItem('token', token);
-          this.router.navigateByUrl("/api/product");
+          //this.router.navigateByUrl("/singup");
         },
         err => {
           console.log(err);
           this.handleError(err);
-        }); 
-  }
+        });  */
+
+        login() {
+          console.log(this.loginForm.value);
+          let user = new User(this.loginForm.value.email, this.loginForm.value.password);
+          this.userService.signin(user)
+            .subscribe(
+              res => {
+                console.log(res);
+                let token = res['token'];
+                localStorage.setItem('token', token);
+                this.router.navigateByUrl("signin");
+              },
+              err => {
+                console.log(err);
+                this.handleError(err);
+              });
+        }
+  
 
   private handleError(err: HttpErrorResponse) {
     if (err.status == 500) {
