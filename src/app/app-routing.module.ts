@@ -5,9 +5,9 @@ import { RegisterComponent } from "./components/register/register.component";
 import { from } from 'rxjs';
 
 const routes: Routes = [
-  { path: 'api/signin', component: LoginComponent},
-  { path: 'api/signup', component: RegisterComponent },
-  { path: '', redirectTo: '/api/signin', pathMatch: 'full' }
+  { path: 'user/signin', component: LoginComponent},
+  { path: 'users', component: RegisterComponent },
+  { path: '', redirectTo: 'user/signin', pathMatch: 'full' }
 
 ];
 

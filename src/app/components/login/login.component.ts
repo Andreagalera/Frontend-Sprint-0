@@ -41,20 +41,7 @@ export class LoginComponent implements OnInit {
       ]
     }
   }
- /*  login(loginForm: NgForm) {
-    console.log(loginForm.value);
-    this.userService.signin(loginForm.value)
-      .subscribe(
-        res => {
-          console.log(res);
-          let token = res['token'];
-          localStorage.setItem('token', token);
-          //this.router.navigateByUrl("/singup");
-        },
-        err => {
-          console.log(err);
-          this.handleError(err);
-        });  */
+ 
 
         login() {
           console.log(this.loginForm.value);
@@ -65,7 +52,7 @@ export class LoginComponent implements OnInit {
                 console.log(res);
                 let token = res['token'];
                 localStorage.setItem('token', token);
-                this.router.navigateByUrl("signin");
+                this.router.navigateByUrl("users");
               },
               err => {
                 console.log(err);

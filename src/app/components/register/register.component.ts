@@ -97,25 +97,20 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  register(registerForm: NgForm) {
-    console.log(registerForm.value);
-    /* this.userService.signup(registerForm.value)
+  
+  register() {
+  /*   console.log(this.registerForm.value);
+    let user = new User(this.registerForm.value.username, this.registerForm.value.surname, this.registerForm.value.name, this.registerForm.value.email, this.registerForm.value.password, this.registerForm.value.confirmPassword, this.registerForm.value.description, this.registerForm.value.localization, this.registerForm.value.age);
+    this.userService.signup(user)
       .subscribe(
         res => {
           console.log(res);
           let token = res['token'];
           localStorage.setItem('token', token);
-          window.location.href = '/api/product';
+          this.router.navigateByUrl("user/signin");
         },
         err => {
-          console.log(err);
-          this.handleError(err);
+          this.registerForm.get("email").setErrors({unique: true});
         }); */
   }
-
-  private handleError(err: HttpErrorResponse) {
-    if( err.status == 500 ) {
-      alert(err);
-    }
   }
-}
