@@ -3,24 +3,29 @@ export class User {
     name: string;
     surname: string;
     username :string;
-    password: string;
     email: string;
     age: string;
-    picture: string;
     description: string;
     localization: string;
+    password: string;
+    //picture: string;
+    passwordrepeat: string;
+    
+    
 
 
-    constructor(email = '', name = '', age = '', username = '', password = '', surname = '', pictute = '', descirption = '', localization = '') {
-        this.email = email;
-        this.username=username;
-        this.password=password;
+    constructor(name = '',surname = '',username = '', email = '',  age = '', descirption = '', localization = '', password = '', passwordrepeat = '') {
         this.name=name;
+        this.surname=surname; 
+        this.username=username;
+        this.email = email;
         this.age=age;
         this.description=descirption;
         this.localization=localization;
-        this.picture=pictute;
-        this.surname=surname;
+        this.password=password;
+        this.passwordrepeat=passwordrepeat;
+       //this.picture=pictute;
+        
     }
 
 }

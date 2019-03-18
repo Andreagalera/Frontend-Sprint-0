@@ -100,7 +100,7 @@ export class RegisterComponent implements OnInit {
   
   register() {
   console.log(this.registerForm.value);
-    let user = new User(this.registerForm.value.username, this.registerForm.value.surname, this.registerForm.value.name, this.registerForm.value.email, this.registerForm.value.password, this.registerForm.value.confirmPassword, this.registerForm.value.description, this.registerForm.value.localization, this.registerForm.value.age);
+    let user = new User(this.registerForm.value.name, this.registerForm.value.surname, this.registerForm.value.username, this.registerForm.value.email, this.registerForm.value.age, this.registerForm.value.description, this.registerForm.value.localization, this.registerForm.value.password, this.registerForm.value.confirmPassword);
     this.userService.signup(user)
       .subscribe(
         res => {
