@@ -50,9 +50,9 @@ export class LoginComponent implements OnInit {
             .subscribe(
               res => {
                 console.log(res);
-                let token = res['token'];
-                localStorage.setItem('token', token);
-                this.router.navigateByUrl("users");
+                /* let token = res['token'];
+                localStorage.setItem('token', token); */
+                //this.router.navigateByUrl("users");
               },
               err => {
                 console.log(err);

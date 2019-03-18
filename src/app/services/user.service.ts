@@ -20,7 +20,7 @@ export class UserService {
     return this.http.post(this.environment.urlUser + "user", user)
   }
   signin(user: User)  {
-   return this.http.post(this.environment.urlUser + "/user/signin", user)
+   return this.http.post(this.environment.urlUser + "/signin", user)
   }
 
   getUsers(){
