@@ -99,18 +99,18 @@ export class RegisterComponent implements OnInit {
 
   
   register() {
-  /*   console.log(this.registerForm.value);
+  console.log(this.registerForm.value);
     let user = new User(this.registerForm.value.username, this.registerForm.value.surname, this.registerForm.value.name, this.registerForm.value.email, this.registerForm.value.password, this.registerForm.value.confirmPassword, this.registerForm.value.description, this.registerForm.value.localization, this.registerForm.value.age);
     this.userService.signup(user)
       .subscribe(
         res => {
           console.log(res);
-          let token = res['token'];
-          localStorage.setItem('token', token);
-          this.router.navigateByUrl("user/signin");
+          /* let token = res['token'];
+          localStorage.setItem('token', token); */
+          //this.router.navigateByUrl("/signin");
         },
         err => {
           this.registerForm.get("email").setErrors({unique: true});
-        }); */
+        });
   }
   }
