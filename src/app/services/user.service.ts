@@ -27,6 +27,10 @@ export class UserService {
     return this.http.get(this.environment.urlUser + "/users")
     
   }
+  getUsersList(){
+    return this.http.get(this.environment.urlUser + "/listusers")
+
+  }
 
  /*  putUser( user: User){
     return this.http.put(this.environment.urlUser + `/${user.id}`, user)
