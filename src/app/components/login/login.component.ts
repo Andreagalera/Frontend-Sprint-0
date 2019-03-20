@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
 
-    // this.getUsers();
+    this.signin();
 
 
 
@@ -65,7 +65,22 @@ export class LoginComponent implements OnInit {
                 this.handleError(err);
               });
         }
+        // getUsersList(){
+        //   this.userService.getUsers()
+        //   .subscribe(res =>{
+        //     this.userService.user= res as User[];//un arreglo de users
+        //     console.log(res);
+        //   });
 
+        signin(){
+          this.userService.getUsers()
+          .subscribe(res =>{
+            this.userService.user= res as User[];//un arreglo de users
+            console.log(res);
+          });
+
+
+        }
        
 
   private handleError(err: HttpErrorResponse) {

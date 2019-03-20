@@ -14,6 +14,8 @@ import { ProvidersFeature } from '@angular/core/src/render3';
   providers:[UserService]
 })
 export class ListUserComponent implements OnInit {
+
+  user: User;
   @Input() users;
 
   constructor(private userService: UserService ) { 
