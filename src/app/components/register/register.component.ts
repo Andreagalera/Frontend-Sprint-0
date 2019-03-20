@@ -56,6 +56,8 @@ export class RegisterComponent implements OnInit {
   }
   confirmPasswword: string;
   ngOnInit() {
+
+    this.getUsersList();
     this.validation_messages = {
       'name': [
         { type: 'required', message: 'Name is required'},
@@ -105,6 +107,7 @@ export class RegisterComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res);
+          this.getUsersList();
           /* let token = res['token'];
           localStorage.setItem('token', token); */
           //this.router.navigateByUrl("/signin");
@@ -113,4 +116,14 @@ export class RegisterComponent implements OnInit {
           this.registerForm.get("email").setErrors({unique: true});
         });
   }
+
+
+  getUsersList(){
+      this.userService.getUsers()
+      .subscribe(res =>{
+        this.userService.user= res as User[];//un arreglo de users
+        console.log(res);
+      });
+    }
+
   }

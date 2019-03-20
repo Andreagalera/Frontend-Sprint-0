@@ -30,6 +30,12 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    // this.getUsers();
+
+
+
+
     this.validation_messages = {
       'email': [
         { type: 'required', message: 'Email is required' },
@@ -41,9 +47,8 @@ export class LoginComponent implements OnInit {
       ]
     }
   }
- 
 
-        login() {
+  login() {
           console.log(this.loginForm.value);
           let user = new User(this.loginForm.value.email, this.loginForm.value.password);
           this.userService.signin(user)
@@ -53,13 +58,15 @@ export class LoginComponent implements OnInit {
                 /* let token = res['token'];
                 localStorage.setItem('token', token); */
                 this.router.navigateByUrl("users");
+               
               },
               err => {
                 console.log(err);
                 this.handleError(err);
               });
         }
-  
+
+       
 
   private handleError(err: HttpErrorResponse) {
     if (err.status == 500) {
