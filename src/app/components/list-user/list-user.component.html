@@ -8,28 +8,40 @@
                 <div class="col s5">
                         <div class="card">
                           <div class="card-content">
-                            <form #employeeForm="ngForm" (ngSubmit)="addEmployee(employeeForm)">
-                              <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="employeeService.selectedEmployee._id">
-                              <div class="row">
+                            <form #userForm="ngForm" (ngSubmit)="editUser(userForm)">
+                              
                                 <div class="input-field col-s12">
-                                  <input type="text" name="name" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.name" placeholder="Enter your FullName">
+                                  <input type="text" name="name" #name="ngModel" [(ngModel)]="userService.selectedUser.name" placeholder="Enter your Name">
                                 </div>
                                 <div class="input-field col-s12">
-                                  <input type="text" name="position" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.position" placeholder="Enter your Position">
+                                  <input type="text" name="username" #name="ngModel" [(ngModel)]="userService.selectedUser.username" placeholder="Enter your Username">
                                 </div>
                                 <div class="input-field col-s12">
-                                  <input type="text" name="office" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.office" placeholder="Enter your Office">
+                                  <input type="text" name="surname" #name="ngModel" [(ngModel)]="userService.selectedUser.surname" placeholder="Enter your Surname">
                                 </div>
                                 <div class="input-field col-s12">
-                                  <input type="text" name="salary" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.salary" value="0" placeholder="Enter your Salary">
+                                  <input type="text" name="email" #name="ngModel" [(ngModel)]="userService.selectedUser.email" placeholder="Enter your Email">
                                 </div>
+                                <div class="input-field col-s12">
+                                  <input type="text" name="age" #name="ngModel" [(ngModel)]="userService.selectedUser.age" placeholder="Enter your Age">
+                                </div>
+                                <div class="input-field col-s12">
+                                  <input type="text" name="description" #name="ngModel" [(ngModel)]="userService.selectedUser.description" placeholder="Enter your Description">
+                                </div>
+                                <div class="input-field col-s12">
+                                  <input type="text" name="localization" #name="ngModel" [(ngModel)]="userService.selectedUser.localization" placeholder="Enter your Localization">
+                                </div>
+                                <div class="input-field col-s12">
+                                  <input type="text" name="password" #name="ngModel" [(ngModel)]="userService.selectedUser.password" placeholder="Enter your Password">
+                                </div>
+                               
                                 <div class="card-action">
                                   <div class="input-field col-s12">
                                     <button class="btn right" style="margin-left: 2px;" (click)="resetForm(employeeForm)">Clean</button>
                                     <button class="btn right">Save</button>
                                   </div>
                                 </div>
-                              </div>
+                             
                             </form>
                           </div>
                         </div>
