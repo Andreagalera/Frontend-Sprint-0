@@ -7,27 +7,30 @@
             <th>Age</th> -->
             <!-- <th>Email</th> -->
         </thead>
+        
 
         <body>
-            <tr>{{user.name}}</tr>
-            <td>{{user.name}}</td>
-            <td>{{user.surname}}</td>
-            <td>{{user.username}}</td>
-            <td>{{user.age}}</td>
-            <td>{{user.picture}}</td>
-            <td>{{user.description}}</td>
-            <!-- <td>{{user.email}}</td>  -->
-            <td>{{user.localitation}}</td>
-
-
-            <td>
-                <!-- <a (click)="editUser">
-                    <i class="mateterial-icons">edit</i>
-                </a> -->
-
-            </td>
-
-
+                <div class="col s7">
+                        <table>
+                
+                            <tr *ngFor="let user of userService.user">
+                
+                                <td>{{user.name}}</td>
+                                <td>{{user.surname}}</td>
+                                <td>{{user.username}}</td>
+                                <td>{{user.age}}</td>
+                                <td>{{user.picture}}</td>
+                                <td>{{user.description}}</td>
+                                <!--<td>{{user.email}}</td>-->
+                                <td>{{user.localitation}}</td>
+                
+                            </tr>
+                
+                
+                        </table>
+                
+                    </div>
+            
         </body>
     </table>
 
