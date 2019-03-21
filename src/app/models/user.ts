@@ -1,5 +1,5 @@
 export class User {
-
+    _id: string;
     name: string;
     surname: string;
     username :string;
@@ -14,7 +14,8 @@ export class User {
     
 
 
-    constructor(name = '',surname = '',username = '', email = '',  age = '', descirption = '', localization = '', password = '', passwordrepeat = '') {
+    constructor(_id = '', name = '',surname = '',username = '', email = '',  age = '', descirption = '', localization = '', password = '', passwordrepeat = '') {
+        this._id = _id;
         this.name=name;
         this.surname=surname; 
         this.username=username;

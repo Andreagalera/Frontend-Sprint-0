@@ -1,18 +1,53 @@
 <h1>List of users </h1>
-
-<div class="col s7">
-    <table>
-        <thead>
-            <!-- <th>Username</th>
-            <th>Age</th> -->
-            <!-- <th>Email</th> -->
-        </thead>
-        
-
+<head>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
+</head>
         <body>
-                <div class="col s7">
-                        <table>
-                
+                <div class="container">
+                <div class="row" ng-model= "form">
+                <div class="col s5">
+                        <div class="card">
+                          <div class="card-content">
+                            <form #employeeForm="ngForm" (ngSubmit)="addEmployee(employeeForm)">
+                              <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="employeeService.selectedEmployee._id">
+                              <div class="row">
+                                <div class="input-field col-s12">
+                                  <input type="text" name="name" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.name" placeholder="Enter your FullName">
+                                </div>
+                                <div class="input-field col-s12">
+                                  <input type="text" name="position" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.position" placeholder="Enter your Position">
+                                </div>
+                                <div class="input-field col-s12">
+                                  <input type="text" name="office" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.office" placeholder="Enter your Office">
+                                </div>
+                                <div class="input-field col-s12">
+                                  <input type="text" name="salary" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.salary" value="0" placeholder="Enter your Salary">
+                                </div>
+                                <div class="card-action">
+                                  <div class="input-field col-s12">
+                                    <button class="btn right" style="margin-left: 2px;" (click)="resetForm(employeeForm)">Clean</button>
+                                    <button class="btn right">Save</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <div class="col s5">
+                        <table class="stripped highlight black-text">
+                                <thead>
+                                        <th>Name</th>
+                                        <th>Surname</th>
+                                        <th>Username</th>
+                                        <th>Age</th>
+                                        <th>Picture</th>
+                                        <th>Description</th>
+                                        <th>Email</th>
+                                        <th>Localization</th>
+                                    </thead>
                             <tr *ngFor="let user of userService.user">
                 
                                 <td>{{user.name}}</td>
@@ -21,8 +56,16 @@
                                 <td>{{user.age}}</td>
                                 <td>{{user.picture}}</td>
                                 <td>{{user.description}}</td>
-                                <!--<td>{{user.email}}</td>-->
-                                <td>{{user.localitation}}</td>
+                                <td>{{user.email}}</td>
+                                <td>{{user.localization}}</td>
+                                <td>
+                                        <a (click)="editUser(user)" ng-hide = "form">
+                                                <i class="fas fa-pencil-alt"></i>
+                                        </a>
+                                        <a (click)="deleteUser(user._id, userForm)">
+                                                <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                      </td>
                 
                             </tr>
                 
@@ -32,6 +75,3 @@
                     </div>
             
         </body>
-    </table>
-
-</div>

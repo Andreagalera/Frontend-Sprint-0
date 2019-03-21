@@ -29,16 +29,15 @@ export class UserService {
   }
   getUsersList(){
     return this.http.get(this.environment.urlUser + "/listusers")
-
   }
 
- /*  putUser( user: User){
-    return this.http.put(this.environment.urlUser + `/${user.id}`, user)
+   putUser( user: User){
+    return this.http.put(this.environment.urlUser + `/users/${user._id}`, user)
   }
 
-  deleteUser(user: User){
-    return this.http.delete(this.environment.urlUser + `/${user.id}`, user)
-  } */
+  deleteUser(_id: string){
+    return this.http.delete(this.environment.urlUser + `/users/${_id}`)
+  } 
 
 
 }
