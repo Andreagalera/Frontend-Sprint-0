@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     (window as any).fbAsyncInit = function() {
       FB.init({
-        appId      : '2049546222009975',
+        appId      : '2275019405888323',
         cookie     : true,
         xfbml      : true,
         version    : 'v3.2'
