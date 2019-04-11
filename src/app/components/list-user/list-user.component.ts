@@ -16,6 +16,7 @@ declare var M: any;
 })
 export class ListUserComponent implements OnInit {
 
+  userForm: NgForm;
   user: User;
   @Input() users;
 
@@ -36,8 +37,27 @@ export class ListUserComponent implements OnInit {
       console.log(res);
     });
   }
+
+  updateUser(form: NgForm){
+    console.log("Hola");
+    this.userForm = form;
+    console.log(form.value._id);
+    if(form.value._id){
+      console.log("Form: " + form.value);
+      this.userService.putUser(form.value)
+      .subscribe(res => {
+        this.resetForm(form);
+        M.toast({html: 'Updated Succesfully'});
+        this.getUsersList();
+      })
+    }
+  }
+
   editUser(user: User){
     this.userService.selectedUser = user;
+    console.log(user);
+    
+    
   }
   deleteUser(_id: string, form: NgForm){
     if(confirm('Are you sure you want to delete it?')) {
