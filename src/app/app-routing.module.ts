@@ -9,6 +9,8 @@ const routes: Routes = [
   { path: 'user/signin', component: LoginComponent},
   { path: 'users', component: RegisterComponent },
   { path: 'listusers', component: ListUserComponent },
+  { path: 'spotifylogin', component: LoginComponent },
+
   { path: '', redirectTo: 'user/signin', pathMatch: 'full' }
 
 ];
