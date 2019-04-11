@@ -23,7 +23,7 @@
         </div>
     </div>
     <div class="form-group">
-        <button class="btn btn-primary" type="submit" [disabled]="!loginForm.valid" [routerLink]="['/listusers']">Log in</button>
+        <button class="btn btn-primary" type="submit" [disabled]="!loginForm.valid" [routerLink]="['/listusers']" (click)="login()">Log in</button>
         <button class="btn btn-primary" [routerLink]="['/users']" style="margin-left: 30px">Register</button>
         <button class="btn btn-primary" style="margin-left: 30px" type="submit" (click)="submitLogin()">Facebook Log in</button>
     </div>

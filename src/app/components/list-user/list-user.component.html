@@ -8,8 +8,8 @@
                 <div class="col s5">
                         <div class="card">
                           <div class="card-content">
-                            <form #userForm="ngForm" (ngSubmit)="editUser(userForm)">
-                              
+                            <form #userForm="ngForm" >
+                              <input type="hidden" name="_id" #_id="ngModel" [(ngModel)] ="userService.selectedUser._id">
                                 <div class="input-field col-s12">
                                   <input type="text" name="name" #name="ngModel" [(ngModel)]="userService.selectedUser.name" placeholder="Enter your Name">
                                 </div>
@@ -37,8 +37,8 @@
                                
                                 <div class="card-action">
                                   <div class="input-field col-s12">
-                                    <button class="btn right" style="margin-left: 2px;" (click)="resetForm(employeeForm)">Clean</button>
-                                    <button class="btn right">Save</button>
+                                    <button class="btn right" style="margin-left: 2px;" (click)="resetForm(userForm)">Clean</button>
+                                    <button class="btn right" (click)="updateUser(userForm)">Save</button>
                                   </div>
                                 </div>
                              
@@ -47,43 +47,42 @@
                         </div>
                       </div>
                     </div>
-                </div>
-                <div class="col s5">
-                        <table class="stripped highlight black-text">
-                                <thead>
-                                        <th>Name</th>
-                                        <th>Surname</th>
-                                        <th>Username</th>
-                                        <th>Age</th>
-                                        <th>Picture</th>
-                                        <th>Description</th>
-                                        <th>Email</th>
-                                        <th>Localization</th>
-                                    </thead>
-                            <tr *ngFor="let user of userService.user">
-                
-                                <td>{{user.name}}</td>
-                                <td>{{user.surname}}</td>
-                                <td>{{user.username}}</td>
-                                <td>{{user.age}}</td>
-                                <td>{{user.picture}}</td>
-                                <td>{{user.description}}</td>
-                                <td>{{user.email}}</td>
-                                <td>{{user.localization}}</td>
-                                <td>
-                                        <a (click)="editUser(user)" ng-hide = "form">
-                                                <i class="fas fa-pencil-alt"></i>
-                                        </a>
-                                        <a (click)="deleteUser(user._id, userForm)">
-                                                <i class="fas fa-trash-alt"></i>
-                                        </a>
-                                      </td>
-                
-                            </tr>
-                
-                
-                        </table>
-                
-                    </div>
-            
+                </div>  
         </body>
+        <div class="col s5">
+          <table class="stripped highlight black-text">
+                  <thead>
+                          <th>Name</th>
+                          <th>Surname</th>
+                          <th>Username</th>
+                          <th>Age</th>
+                          <th>Picture</th>
+                          <th>Description</th>
+                          <th>Email</th>
+                          <th>Localization</th>
+                      </thead>
+              <tr *ngFor="let user of userService.user">
+        
+                  <td>{{user.name}}</td>
+                  <td>{{user.surname}}</td>
+                  <td>{{user.username}}</td>
+                  <td>{{user.age}}</td>
+                  <td>{{user.picture}}</td>
+                  <td>{{user.description}}</td>
+                  <td>{{user.email}}</td>
+                  <td>{{user.localization}}</td>
+                  <td>
+                          <a (click)="editUser(user)" ng-hide = "form">
+                                  <i class="fas fa-pencil-alt"></i>
+                          </a>
+                          <a (click)="deleteUser(user._id, userForm)">
+                                  <i class="fas fa-trash-alt"></i>
+                          </a>
+                        </td>
+        
+              </tr>
+        
+        
+          </table>
+        
+        </div>

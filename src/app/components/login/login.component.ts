@@ -63,15 +63,20 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-          console.log(this.loginForm.value);
-          let user = new User(this.loginForm.value.email, this.loginForm.value.password);
+        console.log("Hola");
+          console.log(this.loginForm.value.email);
+          console.log("Form:"+this.loginForm.value);
+          let user = new User(this.loginForm.value);
+         /* user.email = this.loginForm.value.email;
+          user.password= this.loginForm.value.password;*/
+          console.log("user" +user);
           this.userService.signin(user)
             .subscribe(
               res => {
                 console.log(res);
                 /* let token = res['token'];
                 localStorage.setItem('token', token); */
-                this.router.navigateByUrl("/users");
+               // this.router.navigateByUrl("/users");
 
                
               },

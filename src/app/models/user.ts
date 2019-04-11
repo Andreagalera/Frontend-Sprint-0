@@ -14,14 +14,14 @@ export class User {
     
 
 
-    constructor(_id = '', name = '',surname = '',username = '', email = '',  age = '', descirption = '', localization = '', password = '', passwordrepeat = '') {
+    constructor(_id = '', name = '',surname = '',username = '', email = '',  age = '', description = '', localization = '', password = '', passwordrepeat = '') {
         this._id = _id;
         this.name=name;
         this.surname=surname; 
         this.username=username;
         this.email = email;
         this.age=age;
-        this.description=descirption;
+        this.description=description;
         this.localization=localization;
         this.password=password;
         this.passwordrepeat=passwordrepeat;
