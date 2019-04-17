@@ -2,6 +2,11 @@
 <head>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
 </head>
+
+<!-- The Modal -->
+<div id="id01" class="modal">
+    <span onclick="document.getElementById('id01').style.display='none'" 
+  class="close" title="Close Modal">&times;</span>
         <body>
                 <div class="container">
                 <div class="row" ng-model= "form">
@@ -38,7 +43,7 @@
                                 <div class="card-action">
                                   <div class="input-field col-s12">
                                     <button class="btn right" style="margin-left: 2px;" (click)="resetForm(userForm)">Clean</button>
-                                    <button class="btn right" (click)="updateUser(userForm)">Save</button>
+                                    <button class="btn right" (click)="updateUser(userForm)"  onclick="document.getElementById('id01').style.display='none'">Save</button>
                                   </div>
                                 </div>
                              
@@ -49,6 +54,7 @@
                     </div>
                 </div>  
         </body>
+        </div>
         <div class="col s5">
           <table class="stripped highlight black-text">
                   <thead>
@@ -72,7 +78,7 @@
                   <td>{{user.email}}</td>
                   <td>{{user.localization}}</td>
                   <td>
-                          <a (click)="editUser(user)" ng-hide = "form">
+                          <a (click)="editUser(user)" ng-hide = "form" onclick="document.getElementById('id01').style.display='block'">
                                   <i class="fas fa-pencil-alt"></i>
                           </a>
                           <a (click)="deleteUser(user._id, userForm)">
@@ -86,3 +92,15 @@
           </table>
         
         </div>
+
+        <script>
+            // Get the modal
+            var modal = document.getElementById('id01');
+            
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+              if (event.target == modal) {
+                modal.style.display = "none";
+              }
+            }
+            </script>

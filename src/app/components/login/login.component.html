@@ -1,4 +1,73 @@
-<h2>Login</h2>
+ <div class="container">
+        <form action="/action_page.php">
+          <div class="row"> 
+              <nav>
+            <h2 style="text-align:center">Login Beat2Beat admin</h2>
+        </nav>
+            
+      
+            <div class="col">
+                    <pre></pre>
+
+              <a href="#" class="fb btn">
+                <i class="fa fa-facebook fa-fw"></i> Login with Facebook
+              </a>
+              <div> 
+            <pre></pre>
+
+              </div>
+              <a href="#" class="twitter btn">
+                <i class="fa fa-twitter fa-fw"></i> Login with Twitter
+              </a>
+    
+            </div>
+      
+            <div class="col">
+              <div class="hide-md-lg">
+                <p>Or sign in manually:</p>
+              </div>
+      
+              <form [formGroup]="loginForm" (ngSubmit)="login()">
+                    <div class="form-group">
+                        <label>username</label>
+                        <input type="text" class="form-control" formControlName="username" />
+                        <div class="validation-errors">
+                            <ng-container *ngFor="let validation of validation_messages.username">
+                                <div class="alert alert-danger" *ngIf="loginForm.get('username').hasError(validation.type) && (loginForm.get('username').dirty || loginForm.get('username').touched)">
+                                    {{ validation.message }}
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" class="form-control" formControlName="password" />
+                        <div class="validation-errors">
+                            <ng-container *ngFor="let validation of validation_messages.password">
+                                <div class="alert alert-danger" *ngIf="loginForm.get('password').hasError(validation.type) && (loginForm.get('password').dirty || loginForm.get('password').touched)">
+                                    {{ validation.message }}
+                                </div>
+                            </ng-container>
+                        </div>
+                        <input type="submit" value="Login" type="submit" [disabled]="!loginForm.valid" (click)="login()" >
+                    </div>
+                </form>
+            </div>
+            
+          </div>
+        </form>
+      </div>
+      
+      <div class="bottom-container">
+        <div class="row">
+          <div class="col">
+            <a href="#" style="color:white" class="btn" [routerLink]="['/users']">Sign up</a>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-primary" style="margin-left: 30px" type="submit" (click)="submitLogin()">Facebook Log in</button>
+      
+<!-- <h2>Login</h2>
 <form [formGroup]="loginForm" (ngSubmit)="login()">
     <div class="form-group">
         <label>username</label>
@@ -29,4 +98,4 @@
     </div>
     
 
-</form>
+</form> -->
