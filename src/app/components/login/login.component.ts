@@ -4,6 +4,7 @@ import { HttpErrorResponse } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { UserService } from "../../services/user.service";
 import { User } from "../../models/user";
+declare var FB: any;
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -30,10 +31,23 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    (window as any).fbAsyncInit = function() {
+      FB.init({
+        appId      : '2275019405888323',
+        cookie     : true,
+        xfbml      : true,
+        version    : 'v3.2'
+      });
+      FB.AppEvents.logPageView();
+    };
 
-    //this.signin();
-
-
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "https://connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
 
 
     this.validation_messages = {
@@ -72,6 +86,8 @@ export class LoginComponent implements OnInit {
                 this.handleError(err);
               });
         }
+
+        
        
 
  /*  private handleError(err: HttpErrorResponse) {
@@ -89,4 +105,26 @@ export class LoginComponent implements OnInit {
       this.loginForm.get('password').setErrors({valid: true});
     }
   }
+  submitLogin(){
+    console.log("submit login to facebook");
+    //FB.login();
+    FB.login((response)=>
+        {
+          console.log("hola");
+          console.log('submitLogin',response);
+          if (response.authResponse)
+          {
+            console.log(response.authResponse);
+            /* let token = res['token'];
+            localStorage.setItem('token', token); */
+            this.router.navigateByUrl("/listusers");
+            
+           }
+           else
+           {
+           console.log('User login failed');
+         }
+      });
+  }
+  
 }
