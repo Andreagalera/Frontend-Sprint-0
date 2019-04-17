@@ -19,9 +19,9 @@ export class LoginComponent implements OnInit {
 
   constructor(private userService: UserService, private router: Router,  private formBuilder: FormBuilder) { 
     this.loginForm = this.formBuilder.group({
-      email: new FormControl('', Validators.compose([
+      username: new FormControl('', Validators.compose([
         Validators.required,
-        Validators.pattern(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)])),
+        Validators.pattern(/.{3,10}$/)])),
 
       password: new FormControl('', Validators.compose([
         Validators.required,
@@ -51,9 +51,9 @@ export class LoginComponent implements OnInit {
 
 
     this.validation_messages = {
-      'email': [
-        { type: 'required', message: 'Email is required' },
-        { type: 'pattern', message: 'Email must be valid. Must contain a @ and only one dot in the domain. Domain between 2 and 3 characters long' }
+      'username': [
+        { type: 'required', message: 'Username is required' },
+        { type: 'pattern', message: 'Email must be unic' }
       ],
       'password': [
         { type: 'required', message: 'Password is required' },
@@ -65,9 +65,9 @@ export class LoginComponent implements OnInit {
 
   login() {
         console.log("Hola");
-          console.log(this.loginForm.value.email);
+          console.log(this.loginForm.value.username);
           console.log("Form:"+this.loginForm.value);
-          let user = new User(null, null, null, null, this.loginForm.value.email, null, null, null, this.loginForm.value.password, null);
+          let user = new User(null, null, null, this.loginForm.value.username, null, null, null, null, this.loginForm.value.password, null);
          /* user.email = this.loginForm.value.email;
           user.password= this.loginForm.value.password;*/
           console.log("user" +user);
@@ -77,7 +77,7 @@ export class LoginComponent implements OnInit {
                 console.log(res);
                 /* let token = res['token'];
                 localStorage.setItem('token', token); */
-               // this.router.navigateByUrl("/users");
+               this.router.navigateByUrl("/listusers");
 
                
               },
@@ -100,8 +100,12 @@ export class LoginComponent implements OnInit {
 
   private handleError(err: HttpErrorResponse) {
     if (err.status == 500) {
+      console.log("entra")
+      confirm('User incorrect')
       this.loginForm.get('password').setErrors({error: true});
     } else if (err.status == 404) {
+      console.log("entrada")
+      confirm('Password incorrect')
       this.loginForm.get('password').setErrors({valid: true});
     }
   }

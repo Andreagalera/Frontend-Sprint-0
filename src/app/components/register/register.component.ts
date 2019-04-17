@@ -22,9 +22,9 @@ export class RegisterComponent implements OnInit {
         Validators.required,
         Validators.pattern(/.{3,10}$/)])),
 
-        surname: new FormControl('', Validators.compose([
+        /* surname: new FormControl('', Validators.compose([
           Validators.required,
-          Validators.pattern(/.{3,10}$/)])),
+          Validators.pattern(/.{3,10}$/)])), */
           
         username: new FormControl('', Validators.compose([
           Validators.required,
@@ -34,7 +34,7 @@ export class RegisterComponent implements OnInit {
         Validators.required,
         Validators.pattern(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)])),
       
-      age: new FormControl('', Validators.compose([
+     /* age: new FormControl('', Validators.compose([
         Validators.required,
         Validators.pattern(/.{3,10}$/)])),
 
@@ -44,7 +44,7 @@ export class RegisterComponent implements OnInit {
 
       localization: new FormControl('', Validators.compose([
         Validators.required,
-        Validators.pattern(/.{3,10}$/)])),
+        Validators.pattern(/.{3,10}$/)])), */
 
       password: new FormControl('', Validators.compose([
         Validators.required,
@@ -63,10 +63,10 @@ export class RegisterComponent implements OnInit {
         { type: 'required', message: 'Name is required'},
         { type: 'pattern', message: 'It has to be between 3 and 10 characters long'}
       ],
-      'surname': [
+      /* 'surname': [
         { type: 'required', message: 'Name is required'},
         { type: 'pattern', message: 'It has to be between 3 and 10 characters long'}
-      ],
+      ], */
       'username': [
         { type: 'required', message: 'Name is required'},
         { type: 'pattern', message: 'It has to be between 3 and 10 characters long'}
@@ -76,7 +76,7 @@ export class RegisterComponent implements OnInit {
         { type: 'unique', message: 'Email must be unique'} ,
         { type: 'pattern', message: 'It must be valid. Must contain a @ and only one dot in the domain. Domain between 2 and 3 characters long' }
       ],
-      'age': [
+     /*  'age': [
         { type: 'required', message: 'Name is required'},
         { type: 'pattern', message: 'It has to be between 3 and 10 characters long'}
       ],
@@ -87,7 +87,7 @@ export class RegisterComponent implements OnInit {
       'localization': [
         { type: 'required', message: 'Name is required'},
         { type: 'pattern', message: 'It has to be between 3 and 10 characters long'}
-      ],
+      ], */
       'password': [
         { type: 'required', message: 'Password is required' },
         { type: 'pattern', message: 'It must be valid. Must contain at least one number and must be between 4 and 8 characters' }
@@ -103,7 +103,7 @@ export class RegisterComponent implements OnInit {
   register() {
     console.log("Hola");
   console.log(this.registerForm.value);
-    let user = new User(null, this.registerForm.value.name, this.registerForm.value.surname, this.registerForm.value.username, this.registerForm.value.email, this.registerForm.value.age, this.registerForm.value.description, this.registerForm.value.localization, this.registerForm.value.password, this.registerForm.value.confirmPassword);
+    let user = new User(null, this.registerForm.value.name,null, this.registerForm.value.username, this.registerForm.value.email, null, null, null, this.registerForm.value.password, this.registerForm.value.confirmPassword);
     console.log(user);
     this.userService.signup(user)
       .subscribe(
