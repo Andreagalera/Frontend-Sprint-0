@@ -103,6 +103,7 @@
         <button class="btn btn-primary" type="submit" [disabled]="registerForm.invalid" [routerLink]="['/user/signin']" (click)="register()" >Register</button>
         <a [routerLink]="['/user/signin']" style="margin-left: 30px">Cancel</a>
     </div>
-
+    <input type="date" ng-model="myDate" />
+    <span ng-bind="convertToDate(myDate) | date:'medium'"></span>
 
 </form>

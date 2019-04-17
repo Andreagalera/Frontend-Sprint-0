@@ -43,7 +43,8 @@ export class LoginComponent implements OnInit {
       ],
       'password': [
         { type: 'required', message: 'Password is required' },
-        { type: 'pattern', message: 'Password must be valid. Must contain at least one number and must be between 4 and 8 characters' }
+        { type: 'pattern', message: 'Password must be valid' },
+        { type: 'pattern', message: 'Huston, we have a problem' },
       ]
     }
   }
@@ -52,7 +53,7 @@ export class LoginComponent implements OnInit {
         console.log("Hola");
           console.log(this.loginForm.value.email);
           console.log("Form:"+this.loginForm.value);
-          let user = new User(this.loginForm.value);
+          let user = new User(null, null, null, null, this.loginForm.value.email, null, null, null, this.loginForm.value.password, null);
          /* user.email = this.loginForm.value.email;
           user.password= this.loginForm.value.password;*/
           console.log("user" +user);
@@ -73,11 +74,19 @@ export class LoginComponent implements OnInit {
         }
        
 
-  private handleError(err: HttpErrorResponse) {
+ /*  private handleError(err: HttpErrorResponse) {
     if (err.status == 500) {
       alert(err);
     } else if (err.status == 404) {
       alert('The user does not exist');
+    }
+  } */
+
+  private handleError(err: HttpErrorResponse) {
+    if (err.status == 500) {
+      this.loginForm.get('password').setErrors({error: true});
+    } else if (err.status == 404) {
+      this.loginForm.get('password').setErrors({valid: true});
     }
   }
 }
