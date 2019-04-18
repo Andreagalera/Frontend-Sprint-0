@@ -4,13 +4,14 @@ import { LoginComponent } from "./components/login/login.component";
 import { RegisterComponent } from "./components/register/register.component";
 import {ListUserComponent} from "./components/list-user/list-user.component";
 import { from } from 'rxjs';
+import { UserComponent } from './components/user/user.component';
 
 const routes: Routes = [
   { path: 'user/signin', component: LoginComponent},
   { path: 'users', component: RegisterComponent },
   { path: 'listusers', component: ListUserComponent },
   { path: 'spotifylogin', component: LoginComponent },
-
+  { path: 'listusers/info/:id', component: UserComponent },
   { path: '', redirectTo: 'user/signin', pathMatch: 'full' }
 
 ];

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {User} from "../models/user";
 import {HttpClient} from "@angular/common/http";
 import { EnvironmentService } from './environment.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +39,10 @@ export class UserService {
   deleteUser(_id: string){
     return this.http.delete(this.environment.urlUser + `/users/${_id}`)
   } 
-
+  getUsersDetail(_id: string): Observable<User>{
+    return this.http.get<User>(this.environment.urlUser +`/users/info/${_id}`);
+    
+  }
+ 
 
 }

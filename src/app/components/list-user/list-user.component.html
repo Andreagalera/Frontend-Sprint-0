@@ -28,7 +28,9 @@
                                   <input type="text" name="email" #name="ngModel" [(ngModel)]="userService.selectedUser.email" placeholder="Enter your Email">
                                 </div>
                                 <div class="input-field col-s12">
-                                  <input type="text" name="age" #name="ngModel" [(ngModel)]="userService.selectedUser.age" placeholder="Enter your Age">
+                                  <input type="date" name="age" #name="ngModel" [(ngModel)]="userService.selectedUser.age" placeholder="Enter your Age" ng-model="myDate" />
+                                  <!-- <input type="date" ng-model="myDate" /> -->
+                                  <span ng-bind="convertToDate(myDate) | date:'medium'"></span>
                                 </div>
                                 <div class="input-field col-s12">
                                   <input type="text" name="description" #name="ngModel" [(ngModel)]="userService.selectedUser.description" placeholder="Enter your Description">
@@ -43,7 +45,7 @@
                                 <div class="card-action">
                                   <div class="input-field col-s12">
                                     <button class="btn right" style="margin-left: 2px;" (click)="resetForm(userForm)">Clean</button>
-                                    <button class="btn right" (click)="updateUser(userForm)"  onclick="document.getElementById('id01').style.display='none'">Save</button>
+                                    <button class="btn right" (click)="updateUser(userForm)" onclick="document.getElementById('id01').style.display='none'">Save</button>
                                   </div>
                                 </div>
                              
@@ -85,6 +87,10 @@
                                   <i class="fas fa-trash-alt"></i>
                           </a>
                         </td>
+                    <td>
+                        <button class="btn right" [routerLink]="['/listusers/info', user._id]">Info</button>
+                              
+                        </td>
         
               </tr>
         
@@ -92,6 +98,7 @@
           </table>
         
         </div>
+        
 
         <script>
             // Get the modal
