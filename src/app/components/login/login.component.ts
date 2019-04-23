@@ -53,7 +53,8 @@ export class LoginComponent implements OnInit {
     this.validation_messages = {
       'username': [
         { type: 'required', message: 'Username is required' },
-        { type: 'pattern', message: 'Email must be unic' }
+        { type: 'pattern', message: 'Username must be unic' },
+        { type: 'pattern', message: 'Username must be admin' }
       ],
       'password': [
         { type: 'required', message: 'Password is required' },
@@ -107,6 +108,11 @@ export class LoginComponent implements OnInit {
       console.log("entrada")
       confirm('Password incorrect')
       this.loginForm.get('password').setErrors({valid: true});
+    }
+    else if  (err.status == 401) {
+      console.log("salida")
+      confirm('Unauthorized')
+      this.loginForm.get('username').setErrors({valid: true});
     }
   }
   submitLogin(){
