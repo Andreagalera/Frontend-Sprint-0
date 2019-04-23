@@ -58,8 +58,8 @@ export class LoginComponent implements OnInit {
       ],
       'password': [
         { type: 'required', message: 'Password is required' },
-        { type: 'pattern', message: 'Password must be valid' },
-        { type: 'pattern', message: 'Huston, we have a problem' },
+        { type: 'pattern', message: 'It must be valid' },
+        { type: 'pattern', message: 'It must conatain a number' },
       ]
     }
   }
