@@ -5,13 +5,14 @@ import { RegisterComponent } from "./components/register/register.component";
 import {ListUserComponent} from "./components/list-user/list-user.component";
 import { from } from 'rxjs';
 import { UserComponent } from './components/user/user.component';
+import { MyguardGuard } from "./myguard.guard";
 
 const routes: Routes = [
   { path: 'user/signin', component: LoginComponent},
   { path: 'users', component: RegisterComponent },
-  { path: 'listusers', component: ListUserComponent },
+  { path: 'listusers', component: ListUserComponent, canActivate: [MyguardGuard]},
   { path: 'spotifylogin', component: LoginComponent },
-  { path: 'listusers/info/:id', component: UserComponent },
+  { path: 'listusers/info/:id', component: UserComponent, canActivate: [MyguardGuard] },
   { path: '', redirectTo: 'user/signin', pathMatch: 'full' }
 
 ];

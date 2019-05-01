@@ -21,12 +21,12 @@ export class UserService {
     return this.http.post(this.environment.urlUser + "/users", user)
   }
   signin(user: User)  {
-   return this.http.post(this.environment.urlUser + "/signin", user)
+   return this.http.post(this.environment.urlUser + "/signInAdmin", user)
   }
 
   getUsers(){
     return this.http.get(this.environment.urlUser + "/users")
-    
+
   }
   getUsersList(){
     return this.http.get(this.environment.urlUser + "/listusers")
@@ -38,11 +38,11 @@ export class UserService {
 
   deleteUser(_id: string){
     return this.http.delete(this.environment.urlUser + `/users/${_id}`)
-  } 
+  }
   getUsersDetail(_id: string): Observable<User>{
     return this.http.get<User>(this.environment.urlUser +`/users/info/${_id}`);
-    
+
   }
- 
+
 
 }

@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   validation_messages: any;
 
-  constructor(private userService: UserService, private router: Router, private formBuilder: FormBuilder) { 
+  constructor(private userService: UserService, private router: Router, private formBuilder: FormBuilder) {
     this.registerForm = this.formBuilder.group({
       name: new FormControl('', Validators.compose([
         Validators.required,
@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
         /* surname: new FormControl('', Validators.compose([
           Validators.required,
           Validators.pattern(/.{3,10}$/)])), */
-          
+
         username: new FormControl('', Validators.compose([
           Validators.required,
           Validators.pattern(/.{3,10}$/)])),
@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit {
       email: new FormControl('', Validators.compose([
         Validators.required,
         Validators.pattern(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)])),
-      
+
      /* age: new FormControl('', Validators.compose([
         Validators.required,
         Validators.pattern(/.{3,10}$/)])),
@@ -99,7 +99,7 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  
+
   register() {
     console.log("Hola");
   console.log(this.registerForm.value);
@@ -110,8 +110,8 @@ export class RegisterComponent implements OnInit {
         res => {
           console.log(res);
           this.getUsersList();
-          /* let token = res['token'];
-          localStorage.setItem('token', token); */
+          let token = res['token'];
+          localStorage.setItem('token', token);
           //this.router.navigateByUrl("/signin");
         },
         err => {

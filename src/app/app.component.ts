@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Sprint0Frontend';
+
+  goBack() {
+    localStorage.removeItem('token');
+  }
+
 }
+
+

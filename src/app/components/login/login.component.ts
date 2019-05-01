@@ -12,12 +12,12 @@ declare var FB: any;
   providers: [UserService]
 })
 export class LoginComponent implements OnInit {
-  
+
   loginForm: FormGroup;
 
   validation_messages: any;
 
-  constructor(private userService: UserService, private router: Router,  private formBuilder: FormBuilder) { 
+  constructor(private userService: UserService, private router: Router,  private formBuilder: FormBuilder) {
     this.loginForm = this.formBuilder.group({
       username: new FormControl('', Validators.compose([
         Validators.required,
@@ -76,11 +76,11 @@ export class LoginComponent implements OnInit {
             .subscribe(
               res => {
                 console.log(res);
-                /* let token = res['token'];
-                localStorage.setItem('token', token); */
+                let token = res['token'];
+                localStorage.setItem('token', token);
                this.router.navigateByUrl("/listusers");
 
-               
+
               },
               err => {
                 console.log(err);
@@ -88,8 +88,8 @@ export class LoginComponent implements OnInit {
               });
         }
 
-        
-       
+
+
 
  /*  private handleError(err: HttpErrorResponse) {
     if (err.status == 500) {
@@ -128,7 +128,7 @@ export class LoginComponent implements OnInit {
             /* let token = res['token'];
             localStorage.setItem('token', token); */
             this.router.navigateByUrl("/listusers");
-            
+
            }
            else
            {
@@ -136,5 +136,5 @@ export class LoginComponent implements OnInit {
          }
       });
   }
-  
+
 }
