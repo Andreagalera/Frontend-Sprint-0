@@ -5,7 +5,7 @@
 
 <!-- The Modal -->
 <div id="id01" class="modal">
-    <span onclick="document.getElementById('id01').style.display='none'" 
+    <span onclick="document.getElementById('id01').style.display='none'"
   class="close" title="Close Modal">&times;</span>
         <body>
                 <div class="container">
@@ -41,19 +41,19 @@
                                 <div class="input-field col-s12">
                                   <input type="text" name="password" #name="ngModel" [(ngModel)]="userService.selectedUser.password" placeholder="Enter your Password">
                                 </div>
-                               
+
                                 <div class="card-action">
                                   <div class="input-field col-s12">
                                     <button class="btn right" (click)="updateUser(userForm)" onclick="document.getElementById('id01').style.display='none'">Save</button>
                                   </div>
                                 </div>
-                             
+
                             </form>
                           </div>
                         </div>
                       </div>
                     </div>
-                </div>  
+                </div>
         </body>
         </div>
         <div class="col s5">
@@ -63,18 +63,16 @@
                           <th>Surname</th>
                           <th>Username</th>
                           <th>Age</th>
-                          <th>Picture</th>
                           <th>Description</th>
                           <th>Email</th>
                           <th>Localization</th>
                       </thead>
               <tr *ngFor="let user of userService.user">
-        
+
                   <td>{{user.name}}</td>
                   <td>{{user.surname}}</td>
                   <td>{{user.username}}</td>
                   <td>{{user.age}}</td>
-                  <td>{{user.picture}}</td>
                   <td>{{user.description}}</td>
                   <td>{{user.email}}</td>
                   <td>{{user.localization}}</td>
@@ -88,21 +86,21 @@
                         </td>
                     <td>
                         <button class="btn right" [routerLink]="['/listusers/info', user._id]">Info</button>
-                              
+
                         </td>
-        
+
               </tr>
-        
-        
+
+
           </table>
-        
+
         </div>
-        
+
 
         <script>
             // Get the modal
             var modal = document.getElementById('id01');
-            
+
             // When the user clicks anywhere outside of the modal, close it
             window.onclick = function(event) {
               if (event.target == modal) {

@@ -10,14 +10,14 @@ export class User {
     password: string;
     //picture: string;
     passwordrepeat: string;
-    
-    
+
+
 
 
     constructor(_id = '', name = '',surname = '',username = '', email = '',  age = '', description = '', localization = '', password = '', passwordrepeat = '') {
         this._id = _id;
         this.name=name;
-        this.surname=surname; 
+        this.surname=surname;
         this.username=username;
         this.email = email;
         this.age=age;
@@ -26,7 +26,7 @@ export class User {
         this.password=password;
         this.passwordrepeat=passwordrepeat;
        //this.picture=pictute;
-        
+
     }
 
 }

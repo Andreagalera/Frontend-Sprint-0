@@ -18,7 +18,7 @@ export class UserService {
     this.environment = new EnvironmentService();
    }
    signup(user: User) {
-    return this.http.post(this.environment.urlUser + "/users", user)
+    return this.http.post(this.environment.urlUser + "/register", user)
   }
   signin(user: User)  {
    return this.http.post(this.environment.urlUser + "/signInAdmin", user)
